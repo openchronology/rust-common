@@ -1,6 +1,13 @@
 #[cfg(test)]
 #[macro_use(quickcheck)]
 extern crate quickcheck_macros;
+#[macro_use]
+extern crate dotenv_codegen;
+#[macro_use]
+extern crate lazy_static;
+
+pub mod consts;
+pub mod session;
 
 use num_rational::BigRational;
 use num_bigint::BigInt;
@@ -57,6 +64,9 @@ impl Arbitrary for MPQ {
         MPQ(x)
     }
 }
+
+// SQL identifier type via `serial`
+pub type Identifier = u32;
 
 #[cfg(test)]
 mod tests {

@@ -6,6 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+dotenv_codegen = "0.15.0"
+hmac = "0.12.1"
+jwt = "0.16.0"
+lazy_static = "1.4.0"
 num-bigint = { version = "0.4.3", features = ["arbitrary", "quickcheck", "serde"] }
 num-rational = "0.4.1"
 num-traits = "0.2.16"
@@ -13,3 +17,4 @@ quickcheck = "1.0.3"
 quickcheck_macros = "1.0.0"
 serde = "1.0.183"
 serde_json = "1.0.104"
+sha2 = "0.10.7"
