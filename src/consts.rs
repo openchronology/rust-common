@@ -1,11 +1,12 @@
 use hmac::{Hmac, Mac};
 use sha2::Sha256;
+use std::env::var;
 
 lazy_static! {
-    pub static ref PGRST_HOST: &'static str = dotenv!("PGRST_HOST");
-    pub static ref HOST_PGRST_SERVER_PORT: &'static str = dotenv!("HOST_PGRST_SERVER_PORT");
-    pub static ref PGRST_JWT_SECRET: &'static str = dotenv!("PGRST_JWT_SECRET");
-    pub static ref PGRST_JWT_AUD: &'static str = dotenv!("PGRST_JWT_AUD");
+    pub static ref PGRST_HOST: String = var("PGRST_HOST").unwrap();
+    pub static ref HOST_PGRST_SERVER_PORT: String = var("HOST_PGRST_SERVER_PORT").unwrap();
+    pub static ref PGRST_JWT_SECRET: String = var("PGRST_JWT_SECRET").unwrap();
+    pub static ref PGRST_JWT_AUD: String = var("PGRST_JWT_AUD").unwrap();
 
     pub static ref PGRST_JWT_KEY: Hmac<Sha256> = Hmac::new_from_slice(
         (*PGRST_JWT_SECRET).as_bytes()

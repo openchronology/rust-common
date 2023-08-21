@@ -15,7 +15,7 @@ impl ToString for JWT {
 
 #[derive(Debug)]
 struct Claims<'a> {
-    aud: &'a str,
+    aud: String,
     iat: u64,
     exp: u64,
     role_key: &'a str,
@@ -28,7 +28,7 @@ impl<'a> Serialize for Claims<'a> {
         S: Serializer
     {
         let mut state = serializer.serialize_map(Some(4))?;
-        state.serialize_entry("aud", self.aud)?;
+        state.serialize_entry("aud", &self.aud)?;
         state.serialize_entry("iat", &self.iat)?;
         state.serialize_entry("exp", &self.exp)?;
         state.serialize_entry(self.role_key, self.role)?;
@@ -43,7 +43,7 @@ pub fn gen_jwt(role: &str) -> JWT {
     let iat = now.duration_since(UNIX_EPOCH).unwrap().as_secs();
     let exp = exp.duration_since(UNIX_EPOCH).unwrap().as_secs();
     let claims = Claims {
-        aud: *PGRST_JWT_AUD,
+        aud: (*PGRST_JWT_AUD).clone(),
         iat,
         exp,
         role_key: &role_key,
