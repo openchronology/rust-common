@@ -3,6 +3,7 @@ use sha2::Sha256;
 
 lazy_static! {
     pub static ref PGRST_HOST: &'static str = dotenv!("PGRST_HOST");
+    pub static ref HOST_PGRST_SERVER_PORT: &'static str = dotenv!("HOST_PGRST_SERVER_PORT");
     pub static ref PGRST_JWT_SECRET: &'static str = dotenv!("PGRST_JWT_SECRET");
     pub static ref PGRST_JWT_AUD: &'static str = dotenv!("PGRST_JWT_AUD");
 
